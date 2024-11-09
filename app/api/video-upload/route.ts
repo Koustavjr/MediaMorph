@@ -33,7 +33,7 @@ export async function POST(request:NextRequest)
     }
     // checking if credentials are not present
 
-    if(!process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || !process.env.CLOUDINARY_API_KEY || process.env.CLOUDINARY_API_SECRET)
+    if(!process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || !process.env.CLOUDINARY_API_KEY || !process.env.CLOUDINARY_API_SECRET)
     {
         return NextResponse.json({
             error: "Credentials are missing"
@@ -64,7 +64,9 @@ export async function POST(request:NextRequest)
                     ]
                 },
                 (error,result)=>{
-                    if(error) reject(error);
+                    if(error){ 
+                        console.log(error)
+                        reject(error)}
                     else resolve(result as CloudinaryUploadResult);
                 }
             )
@@ -83,12 +85,14 @@ export async function POST(request:NextRequest)
                 }
         })
 
-        return NextResponse.json({video})
+        return NextResponse.json(video)
             
     } catch (error) {
-        console.log("Image Upload Failed ",error)
+        console.log("Video Upload Failed ",error)
         return NextResponse.json({
-            error: "Image Upload Failed"
+            error: "Video Upload Failed"
         },{status:500})
+    }finally{
+        await prisma.$disconnect()
     }
 }
