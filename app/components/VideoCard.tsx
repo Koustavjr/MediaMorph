@@ -121,7 +121,7 @@ const VideoCard:React.FC<VideoCardProps> = ({video,onDownload}) => {
 
         <div className='grid grid-cols-2 gap-4 text-sm'>
             <div className='flex items-center'>
-                <FileUp size={18}className='mr-2 text-secondary'/>
+                <FileUp size={18}className='mr-3 ml-2 text-white'/>
                 <div>
                     <div className='font-semibold'>Original</div>
                     <div>{formatSize(Number(video.originalSize))}</div>
@@ -129,19 +129,19 @@ const VideoCard:React.FC<VideoCardProps> = ({video,onDownload}) => {
             </div>
             <div className='flex items-center'>
                 <FileDown size={18} className='mr-2 text-secondary'/>
-                <div className='font-semibold'>Compressed</div>
+                <div className='font-semibold mr-2'>Compressed</div>
                 <div>{formatSize(Number(video.compressedSize))}</div>
             </div>
         </div>
             <div className='flex items-center justify-between
             mt-4
             '>
-                <div className='text-sm font-semibold'>
+                <div className='text-sm font-semibold ml-2'>
                     Compression:{" "}
                     <span className='text-accent'>{compressionPercentage}%</span>
                 </div>
                 <button
-                className='btn btn-primary btn-sm'
+                className='btn btn-primary btn-sm mr-2 mb-1'
                 onClick={()=>{
                     onDownload(getFullVideoUrl(video.publicId),video.title)
 

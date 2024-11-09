@@ -4,8 +4,8 @@ import { NextResponse } from 'next/server';
 const isPublicRoute = createRouteMatcher([
     "/sign-in(.*)",
     "/sign-up(.*)",
-    "/",
-    "/home"
+    "/home",
+    "/"
 ])
 const isPublicApiRoute = createRouteMatcher([
     "/api/videos"

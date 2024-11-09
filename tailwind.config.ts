@@ -16,7 +16,7 @@ const config: Config = {
   },
   plugins: [require('daisyui'),],
   daisyui:{
-    themes:["coffee"]
+    themes:["cupcake"]
   }
 };
 export default config;
