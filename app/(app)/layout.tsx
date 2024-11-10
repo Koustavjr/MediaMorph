@@ -60,8 +60,8 @@ export default function AppLayout({
             >
               <div className="w-10 rounded-full">
                 <img
-                  alt={user?.emailAddresses[0].emailAddress || user?.username}
-                  src={user?.imageUrl}
+                  alt={user?.emailAddresses[0].emailAddress || user?.username || 'Use Avatar'}
+                  src={user?.imageUrl  }
                 />
               </div>
             </div>
